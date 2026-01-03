@@ -25,7 +25,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   // Define your unique labels in a list
   final List<String> labels = ['S', 'M', 'L'];
 
- final prodContr = Get.put(ProductController());
+ final ProductController prodContr = Get.find<ProductController>();
 
  addToCart(product, context){
     prodContr.addProduct(product);
@@ -77,18 +77,21 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ],
                 ),
                 SizedBox(height: 25),
-                Container(
-                  padding: EdgeInsets.all(0),
-                  width: double.infinity,
-                  height: 250,
-                  decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(20), bottom: Radius.circular(20)),
-                  image: DecorationImage(
-                    image: AssetImage(widget.product.imageUrl),
-                    fit: BoxFit.cover,
+                Hero(
+                tag: 'product-image-${widget.product.name}',
+                  child: Container(
+                    padding: EdgeInsets.all(0),
+                    width: double.infinity,
+                    height: 250,
+                    decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(20), bottom: Radius.circular(20)),
+                    image: DecorationImage(
+                      image: AssetImage(widget.product.imageUrl),
+                      fit: BoxFit.cover,
+                    ),
+                   ),
                   ),
-                 ),
                 ),
                 SizedBox(height: 15),
                 Text(

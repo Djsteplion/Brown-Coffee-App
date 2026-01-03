@@ -12,12 +12,19 @@ class FavoritesScreen extends StatefulWidget {
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
 
-  final prodContr = Get.put(ProductController());
+  final prodContr = Get.find<ProductController>();
 
   @override
   Widget build(BuildContext context) {
+    bool isEmptyFavorites = prodContr.favoritesList.isEmpty;
     return Scaffold(
-      body: Padding(
+      backgroundColor: Color(0XFFEDEDED),
+      body: isEmptyFavorites? Center(
+        child: Text(
+          'No favorites yet',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,)
+        ),
+      ) : Padding(
             padding: const EdgeInsets.all(8.0),
             child:GetBuilder<ProductController>(
   builder: (controller) {

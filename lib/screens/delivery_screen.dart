@@ -215,7 +215,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                                         ),
                                         SizedBox(width: 15),
                                         Text(
-                                          'We will  deliver your goods to you in '
+                                          'We will  deliver your goods to you in'
                                           '\nthe shortest possible time',
                                           style: TextStyle(
                                             color: Colors.black,

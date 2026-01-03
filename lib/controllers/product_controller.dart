@@ -61,7 +61,8 @@ final List<Product> products = [
   ),
 ];
 
-List<Product> cart = <Product>[].obs;
+
+var cart = <Product>[].obs;
 double get totalAmount => cart.fold(0.0, (sum, item) => sum + (item.price * item.quantity));
 double get total => totalAmount + 1.0; // Adding $1.0 delivery fee
 
@@ -74,10 +75,12 @@ void addProduct(Product product){
     } else {
     cart.add(product);
     }
+    update();
 }
 
 removeProduct(Product product){
   cart.remove(product);
+  update();
 }
 
 makeFavorite(Product product){
